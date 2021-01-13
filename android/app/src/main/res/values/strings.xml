@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">에어소프트 직구 계산기</string>
+    <string name="MoneyType">거래 통화</string>
+    <string name="ProductPrice">제품 가격</string>
+    <string name="FixPrice">공임비</string>
+    <string name="Delivery">배송료</string>
+    <string name="Amount">물건 수량</string>
+    <string name="IncludeFee">통관대행수수료 적용</string>
+    <string name="Calculate">계산</string>
+    <string name="EditText_Hint">값 입력</string>
+</resources>
