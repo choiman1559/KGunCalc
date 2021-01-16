@@ -41,7 +41,7 @@ public class GunShopCalculator {
             screen.doResizeIfNecessary();
 
             final WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen);
-            final Window window = new BasicWindow(" 직구 가격 계산기 v.1.1 ");
+            final Window window = new BasicWindow(" 직구 가격 계산기 v.1.2.0 ");
 
             Panel contentPanel = new Panel(new GridLayout(2));
             GridLayout gridLayout = (GridLayout) contentPanel.getLayoutManager();
@@ -52,7 +52,7 @@ public class GunShopCalculator {
                 window.setComponent(contentPanel);
                 textGUI.addWindowAndWait(window);
             }
-            JSONObject ChangeMoneyInfo = readJsonFromUrl("https://earthquake.kr:23490/");
+            JSONObject ChangeMoneyInfo = readJsonFromUrl("https://earthquake.kr:23490/query/USDKRW,HKDKRW,TWDKRW,EURKRW,JPYKRW,USDHKD,USDTWD,USDEUR,USDJPY");
 
             Label title = new Label("직구 가격을 계산 합니다. 키보드를 이용 하여 항목을 선택/수정 합니다. \nMade by. Choiman1559 / This Software is Free-software under LGPL-3.0 license.");
             title.setLayoutData(GridLayout.createLayoutData(
@@ -117,7 +117,7 @@ public class GunShopCalculator {
                     MessageDialog.showMessageDialog(textGUI, " 오류! ", "값을 모두 입력하십시오!", MessageDialogButton.OK);
                 } else {
                     try {
-                        DecimalFormat format = new DecimalFormat("###,###.##");
+                        DecimalFormat format = new DecimalFormat("###,###");
                         String mCode =  Money_Type.getText().split(" ")[0];
                         double total = Double.parseDouble(Price_Product.getText())
                                 * Integer.parseInt(Amount_Guns.getText())

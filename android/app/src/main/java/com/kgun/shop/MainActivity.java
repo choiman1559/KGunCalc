@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputFilter;
-import android.text.Spanned;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -50,10 +50,8 @@ public class MainActivity extends AppCompatActivity {
             TextView Result1 = findViewById(R.id.TextView_Result_1);
             TextView Result2 = findViewById(R.id.TextView_Result_2);
             String Money_Date = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.KOREAN).format(new Date(Global.Money_Data.getLong("update")));
-            InputFilter[] NumberAndDot = new InputFilter[] {(charSequence, i, i1, spanned, i2, i3) -> {
-                Pattern pattern = Pattern.compile("[0-9]*\\.?[0-9]*");
-                return charSequence.equals("") || pattern.matcher(charSequence).matches() ? charSequence : "";
-            }};
+            Pattern pattern = Pattern.compile("[0-9]*\\.?[0-9]*");
+            InputFilter[] NumberAndDot = new InputFilter[] {(charSequence, i, i1, spanned, i2, i3) -> charSequence.equals("") || pattern.matcher(charSequence).matches() ? charSequence : ""};
 
             Product.setFilters(NumberAndDot);
             FixPrice.setFilters(NumberAndDot);
@@ -77,6 +75,28 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) { }
             });
+
+            Intent intent = getIntent();
+            if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M &&
+                    intent.getAction().equals(Intent.ACTION_PROCESS_TEXT) &&
+                    intent.hasExtra(Intent.EXTRA_PROCESS_TEXT)) {
+                String textToProcess = intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT).toString();
+                String Processed = textToProcess.replaceAll("[^[[0-9]*.?[0-9]]]","");
+                Product.setText(Processed);
+
+                String textToProcessLower = textToProcess.toLowerCase();
+                if(textToProcessLower.contains("hk$") || textToProcessLower.contains("hong kong dollar") || textToProcessLower.contains("hkd")) {
+                    MoneyType.setSelection(1);
+                } else if(textToProcessLower.contains("nt$") || textToProcessLower.contains("taiwan dollar") || textToProcessLower.contains("twd")) {
+                    MoneyType.setSelection(2);
+                } else if(textToProcessLower.contains("$") || textToProcessLower.contains("dollar") || textToProcessLower.contains("usd")) {
+                    MoneyType.setSelection(0);
+                } else if(textToProcessLower.contains("€") || textToProcessLower.contains("euro") || textToProcessLower.contains("eur")) {
+                    MoneyType.setSelection(3);
+                } else if(textToProcessLower.contains("¥") || textToProcessLower.contains("円") || textToProcessLower.contains("圓") || textToProcessLower.contains("yen") || textToProcessLower.contains("jpy")) {
+                    MoneyType.setSelection(4);
+                }
+            }
 
             Calculate.setOnClickListener((v) -> {
                 String[] EditText = {"","","",""};
@@ -176,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(Void... voids) {
             try {
                 isConnected = Global.netIsAvailable();
-                Global.Money_Data = Global.readJsonFromUrl("https://earthquake.kr:23490/");
+                Global.Money_Data = Global.readJsonFromUrl("https://earthquake.kr:23490/query/USDKRW,HKDKRW,TWDKRW,EURKRW,JPYKRW,USDHKD,USDTWD,USDEUR,USDJPY");
             } catch (Exception e) {
                 return e.toString();
             }
