@@ -1,9 +1,6 @@
 package com.kgun.shop;
 
 import android.app.Application;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,6 +29,7 @@ public class Global extends Application {
         Money_Type.add("TWD (대만 달러)");
         Money_Type.add("EUR (유럽 유로)");
         Money_Type.add("JPY (일본 엔화)");
+        Money_Type.add("CNY (중국 엔화)");
     }
 
     public static boolean netIsAvailable() {

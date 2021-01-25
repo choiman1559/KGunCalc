@@ -10,8 +10,8 @@ android {
         applicationId "com.kgun.shop"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1010200
-        versionName "1.2.0"
+        versionCode 1010201
+        versionName "1.2.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

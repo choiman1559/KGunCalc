@@ -41,7 +41,7 @@ public class GunShopCalculator {
             screen.doResizeIfNecessary();
 
             final WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen);
-            final Window window = new BasicWindow(" 직구 가격 계산기 v.1.2.0 ");
+            final Window window = new BasicWindow(" 직구 가격 계산기 v.1.2.1 ");
 
             Panel contentPanel = new Panel(new GridLayout(2));
             GridLayout gridLayout = (GridLayout) contentPanel.getLayoutManager();
@@ -52,7 +52,7 @@ public class GunShopCalculator {
                 window.setComponent(contentPanel);
                 textGUI.addWindowAndWait(window);
             }
-            JSONObject ChangeMoneyInfo = readJsonFromUrl("https://earthquake.kr:23490/query/USDKRW,HKDKRW,TWDKRW,EURKRW,JPYKRW,USDHKD,USDTWD,USDEUR,USDJPY");
+            JSONObject ChangeMoneyInfo = readJsonFromUrl("https://earthquake.kr:23490/query/USDKRW,HKDKRW,TWDKRW,EURKRW,JPYKRW,CNYKRW,USDHKD,USDTWD,USDEUR,USDJPY,USDCNY");
 
             Label title = new Label("직구 가격을 계산 합니다. 키보드를 이용 하여 항목을 선택/수정 합니다. \nMade by. Choiman1559 / This Software is Free-software under LGPL-3.0 license.");
             title.setLayoutData(GridLayout.createLayoutData(
@@ -67,6 +67,7 @@ public class GunShopCalculator {
             countries.add("TWD (대만 달러)");
             countries.add("EUR (유럽 유로)");
             countries.add("JPY (일본 엔화)");
+            countries.add("CNY (중국 엔화)");
             ComboBox<String> Money_Type = new ComboBox<>(countries);
             Money_Type.setReadOnly(true);
             Money_Type.setPreferredSize(new TerminalSize(20, 1));

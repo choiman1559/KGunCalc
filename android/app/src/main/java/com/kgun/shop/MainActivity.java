@@ -95,9 +95,11 @@ public class MainActivity extends AppCompatActivity {
                     MoneyType.setSelection(3);
                 } else if(textToProcessLower.contains("¥") || textToProcessLower.contains("円") || textToProcessLower.contains("圓") || textToProcessLower.contains("yen") || textToProcessLower.contains("jpy")) {
                     MoneyType.setSelection(4);
+                } else if(textToProcessLower.contains("元") || textToProcessLower.contains("renminbi") || textToProcessLower.contains("yuan") || textToProcessLower.contains("yuán") || textToProcessLower.contains("cny")) {
+                    MoneyType.setSelection(5);
                 }
             }
-
+            
             Calculate.setOnClickListener((v) -> {
                 String[] EditText = {"","","",""};
                 EditText[0] = Product.getText().toString();
@@ -130,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                         if(mCode.equals("USD")) OverPrice = 150;
                         else OverPrice = Global.Money_Data.getJSONArray("USD" + mCode).getDouble(0) * 150;
                         if(Double.parseDouble(EditText[0]) >= OverPrice) {
-                            ResultPrice = (double) (total * 1.2);
+                            ResultPrice = total * 1.2;
                         } else ResultPrice = total;
                         ResultPrice = ResultPrice * Global.Money_Data.getJSONArray(mCode + "KRW").getDouble(0) + 55000 + (IncludeFee.isChecked() ? 4000 : 0);
                         Result1.setText(Content);
@@ -196,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(Void... voids) {
             try {
                 isConnected = Global.netIsAvailable();
-                Global.Money_Data = Global.readJsonFromUrl("https://earthquake.kr:23490/query/USDKRW,HKDKRW,TWDKRW,EURKRW,JPYKRW,USDHKD,USDTWD,USDEUR,USDJPY");
+                Global.Money_Data = Global.readJsonFromUrl("https://earthquake.kr:23490/query/USDKRW,HKDKRW,TWDKRW,EURKRW,JPYKRW,CNYKRW,USDHKD,USDTWD,USDEUR,USDJPY,USDCNY");
             } catch (Exception e) {
                 return e.toString();
             }
