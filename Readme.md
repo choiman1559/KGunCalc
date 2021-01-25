@@ -1,6 +1,6 @@
 # KGunCalc - 에어소프트 해외직구 계산기
 [![version](https://img.shields.io/github/v/release/choiman1559/KGunCalc?include_prereleases)](https://github.com/choiman1559/KGunCalc/releases/latest)
-[![license](https://img.shields.io/badge/License-LGPL--3.0-green.svg?logo=gnu)](https://www.gnu.org/licenses/lgpl-3.0.html)
+[![license](https://img.shields.io/badge/License-LGPL--2.1-green.svg?logo=gnu)](https://www.gnu.org/licenses/lgpl-2.1.html)
 [![language](https://img.shields.io/badge/Language-Java-green?logo=java)](https://java.com/ko/)
 [![Last](https://img.shields.io/github/last-commit/choiman1559/KGunCalc)](https://github.com/choiman1559/KGunCalc/commit/master)
 
