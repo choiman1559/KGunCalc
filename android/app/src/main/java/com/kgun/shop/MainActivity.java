@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     void init() {
         try {
+            if(BuildConfig.DEBUG) Log.d("KGunCalcMoneyData","JSON :" + Global.Money_Data);
             Spinner MoneyType = findViewById(R.id.Spinner_MoneyType);
             EditText Product = findViewById(R.id.ExitText_ProductPrice);
             EditText FixPrice = findViewById(R.id.EditText_FixPrice);
@@ -198,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(Void... voids) {
             try {
                 isConnected = Global.netIsAvailable();
-                Global.Money_Data = Global.readJsonFromUrl("https://earthquake.kr:23490/query/USDKRW,HKDKRW,TWDKRW,EURKRW,JPYKRW,CNYKRW,USDHKD,USDTWD,USDEUR,USDJPY,USDCNY");
+                Global.Money_Data = Global.readJsonFromUrl("https://exchange.jaeheon.kr:23490/query/USDKRW,HKDKRW,TWDKRW,EURKRW,JPYKRW,CNYKRW,USDHKD,USDTWD,USDEUR,USDJPY,USDCNY");
             } catch (Exception e) {
                 return e.toString();
             }
