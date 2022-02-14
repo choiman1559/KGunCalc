@@ -6,6 +6,7 @@
     <string name="Delivery">배송료</string>
     <string name="Amount">물건 수량</string>
     <string name="IncludeFee">통관대행수수료 적용</string>
+    <string name="UseSpread">전신환(TT) 매수/매도 미적용</string>
     <string name="Calculate">계산</string>
     <string name="EditText_Hint">값 입력</string>
 </resources>
