@@ -3,6 +3,7 @@
 [![license](https://img.shields.io/badge/License-LGPL--2.1-green.svg?logo=gnu)](https://www.gnu.org/licenses/lgpl-2.1.html)
 [![language](https://img.shields.io/badge/Language-Java-green?logo=java)](https://java.com/ko/)
 [![Last](https://img.shields.io/github/last-commit/choiman1559/KGunCalc)](https://github.com/choiman1559/KGunCalc/commit/master)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fchoiman1559%2FKGunCalc.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fchoiman1559%2FKGunCalc?ref=badge_shield)
 
 [![version](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQKUUtefY6l9YGHF0GmQAijrUAUueZcJqwGIA&usqp=CAU)](https://play.google.com/store/apps/details?id=com.kgun.shop)
 
@@ -18,3 +19,7 @@
 ### 스크린샷
 왼쪽부터 차례대로 엑셀 버전 (원판), 자바 버전, 안드로이드 버전
 ![screenshot](https://github.com/choiman1559/KGunCalc/blob/master/ScreenShot.png)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fchoiman1559%2FKGunCalc.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fchoiman1559%2FKGunCalc?ref=badge_large)
